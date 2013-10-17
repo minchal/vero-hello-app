@@ -1,4 +1,4 @@
-Vero Framework "Hello World" Application
+Vero Framework "Hello World" App
 ========
 
 @TODO
