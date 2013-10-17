@@ -1,4 +1,4 @@
-Vero CMS
+Vero Framework "Hello World" Application
 ========
 
 @TODO
@@ -13,30 +13,30 @@ Installation
 
 Get application code, e.g.:
 
-    ``` sh
-    $ git clone git@github.com:minchal/vero-hello-app.git
-    ```
+```bash
+git clone git@github.com:minchal/vero-hello-app.git
+```
 
 Install [Composer](https://getcomposer.org) and dependencies:
 
-    ``` sh
-    $ cd vero-hello-app/system
-    $ curl -sS https://getcomposer.org/installer | php
-    $ php composer.phar install
-    ```
+```bash
+cd vero-hello-app/system
+curl -sS https://getcomposer.org/installer | php
+php composer.phar install
+```
 
 Create configuration file:
 
-    ``` sh
-    $ cp config.php.example config.php
-    ```
+```bash
+cp config.php.example config.php
+```
 
 Make Vero visible for Apache, ex.:
 
-    ``` sh
-    $ cd ..
-    $ sudo ln -s . /var/www/vero/
-    ```
+```bash
+cd ..
+sudo ln -s . /var/www/vero/
+```
 
 and go to [http://localhost/vero/](http://localhost/vero/)
 
