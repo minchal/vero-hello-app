@@ -1,0 +1,12 @@
+{
+	"require": {
+		"php": ">=5.4",
+		"minchal/vero": "dev-master",
+		"doctrine/orm": "*",
+		"twig/twig": "*",
+		"psr/log": "*",
+        "swiftmailer/swiftmailer" : "*",
+        "imagine/imagine": "*",
+        "gedmo/doctrine-extensions": "*"
+	}
+}

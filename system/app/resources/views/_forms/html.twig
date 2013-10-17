@@ -1,0 +1,46 @@
+
+{%- macro header(form) -%}
+    id="{{ form.name() }}" action="{{ form.action() }}" method="{{ form.method() }}"
+{%- endmacro -%}
+
+{% macro attr(items) %}
+    {%- if items is iterable %}
+        {%- for a,v in items %} {{ a }}="{{ v }}"{% endfor -%}
+    {%- else -%}
+        {{ items }}
+    {%- endif -%}
+{% endmacro %}
+
+{% macro input(type, name, value, attr = {}, id = null) %}
+    {% if type in ['text','email','password','number'] %}
+        {% set attr = attr|merge({class: 'form-control'}) %}
+    {% endif %}
+    <input type="{{ type }}" name="{{ name }}" {%if id %}id="{{ id }}" {% endif %}value="{{ value }}" {{ _self.attr(attr) }} />
+{% endmacro %}
+
+{% macro textarea(name, value, attr = {}, id = null) %}
+    {% set attr = attr|merge({class: 'form-control'}) %}
+    <textarea name="{{ name }}" {%if id %}id="{{ id }}" {% endif %}{{ _self.attr(attr) }}>{{ value }}</textarea>
+{% endmacro %}
+
+{% macro select(options, name, value, attr = {}, id = null) %}
+    {% set value = value and options.getKey is defined ? options.getKey(value) : value %}
+    {% set attr = attr|merge({class: 'form-control'}) %}
+    
+    <select name="{{ name }}" {%if id %}id="{{ id }}" {% endif %}{{ _self.attr(attr) }}>
+         {% for k,v in options %}
+            <option value="{{ k }}"
+                {%- if k == value %} selected="selected"{% endif %}>
+                {{- v -}}
+            </option>
+        {% endfor %}
+    </select>
+{% endmacro %}
+
+{% macro label(label, for, class) %}
+    {% if label %}
+        <label for="{{ for }}"{% if class %} class="{{ class }}"{% endif %}>
+            {{ label }}
+        </label>
+    {% endif %}
+{% endmacro %}

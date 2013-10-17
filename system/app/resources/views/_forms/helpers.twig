@@ -1,0 +1,135 @@
+
+{#===========================
+    Helpers: 
+=============================#}
+{%- macro js_validate(form) -%}
+    <script>
+        require(['jquery','helper/validate','domReady!'], function($, validate) {
+            validate($('#{{ form.name() }}'));
+        });
+    </script>
+{%- endmacro -%}
+
+{%- macro header(form, class = 'form-horizontal') -%}
+    {%- from '_forms/html.twig' import header -%}
+    {{- header(form) }} {% if class %}class="{{ class }}"{% endif %}
+{%- endmacro -%}
+
+{% macro tokens(form) %}
+    {% from '_forms/controls.twig' import hidden %}
+    
+    {{ hidden('csrf', form.csrf(), {}, form.name()~'_') }}
+    {{ hidden(form.name(), form.token() ? form.token() : '1', {}, form.name()~'_') }}
+{% endmacro %}
+
+{% macro submit(label, attr = {}, icon = null) %}
+    {% from '_forms/controls.twig' import button %}
+    
+    <div class="form-controls">
+        {{ button(label, attr, icon) }}
+    </div>
+{% endmacro %}
+
+{% macro button(label, attr = {}, icon = null) %}
+    {% from '_forms/controls.twig' import button %}
+    {{ button(label, attr, icon) }}
+{% endmacro %}
+
+{#===========================
+    Controls: 
+=============================#}
+
+{% macro text(field, label, attr = {}) %}
+    {{ _self.input('text', field, label, attr) }}
+{% endmacro %}
+
+{% macro number(field, label, attr = {}) %}
+    {{ _self.input('number', field, label, attr) }}
+{% endmacro %}
+
+{% macro email(field, label, attr = {}) %}
+    {{ _self.input('email', field, label, attr) }}
+{% endmacro %}
+
+{% macro url(field, label, attr = {}) %}
+    {{ _self.input('url', field, label, attr) }}
+{% endmacro %}
+
+{% macro date(field, label, attr = {}) %}
+    {% set field = field|merge({value: i18n.formatDate(field.value, 'iso')}) %}
+    {{ _self.input('text', field, label, {'data-date-format':'yyyy-mm-dd'}|merge(attr)) }}
+{% endmacro %}
+
+{% macro datetime(field, label, attr = {}) %}
+    {% set field = field|merge({value: i18n.formatDate(field.value,'iso-datetime')}) %}
+    {{ _self.input('text', field, label, {'data-date-format':'yyyy-mm-dd hh:ii:ss'}|merge(attr)) }}
+{% endmacro %}
+
+{% macro input(type, field, label, attr = {}) %}
+    {% from '_forms/controls.twig' import input %}
+    
+    {{ input(
+        type, field.name, label is null ? field.name|i18n~':' : label,
+        field.value, field.error, validate(field.validate, attr), field.form~'_'
+    ) }}
+{% endmacro %}
+ 
+{% macro password(field, label, attr = {}) %}
+    {% from '_forms/controls.twig' import input %}
+    
+    {{ input(
+        'password', field.name, label is null ? field.name|i18n~':' : label, 
+        '', field.error, validate(field.validate, attr), field.form~'_'
+    ) }}
+{% endmacro %}
+
+{% macro textarea(field, label, attr = {}) %}
+    {% from '_forms/controls.twig' import textarea %}
+    
+    {{ textarea(
+        field.name, label is null ? field.name|i18n~':' : label,
+        field.value, field.error, validate(field.validate, attr), field.form~'_'
+    ) }}
+{% endmacro %}
+
+{% macro select(field, label, options = {}, attr = {}) %}
+    {% from '_forms/controls.twig' import select %}
+    
+    {{ select(
+        options ?: resolveSetItems(field.validate),
+        field.name, label is null ? field.name|i18n~':' : label, field.value, field.error, validate(field.validate, attr), field.form~'_'
+    ) }}
+{% endmacro %}
+
+{% macro checkbox(field, label, attr = {}) %}
+    {% from '_forms/controls.twig' import checkbox %}
+    
+    {{ checkbox(
+        field.name, label is null ? field.name|i18n : label,
+        field.value, field.error, validate(field.validate, attr), field.form~'_'
+    ) }}
+{% endmacro %}
+
+{% macro checkboxes(field, label, options, attr = {}) %}
+    {% from '_forms/controls.twig' import checkboxes %}
+    
+    {{ checkboxes(
+        options ?: resolveSetItems(field.validate),
+        field.name, label is null ? field.name|i18n : label, field.value, field.error, validate(field.validate, attr), field.form~'_'
+    ) }}
+{% endmacro %}
+
+{% macro radio(field, label, options, attr = {}) %}
+    {% from '_forms/controls.twig' import radio %}
+    
+    {{ radio(
+            options ?: resolveSetItems(field.validate),
+            field.name, label is null ? field.name|i18n : label, field.value, field.error, validate(field.validate, attr), field.form~'_'
+    ) }}
+{% endmacro %}
+
+{% macro hidden(field, attr = {}) %}
+    {% from '_forms/controls.twig' import hidden %}
+    
+    {{ hidden(field.name, field.value, attr, field.form~'_') }}
+{% endmacro %}

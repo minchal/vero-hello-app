@@ -1,0 +1,13 @@
+{% extends "_layout/default.twig" %}
+
+{% block body %}
+    {% for type, msg in widgets.Flash.all() %}
+        <div class="alert alert-{{ type }}">{{ msg }}</div>
+    {% endfor %}
+    
+    <h1>Hello,</h1>
+    
+    {% block content %}
+        
+    {% endblock %}
+{% endblock %}

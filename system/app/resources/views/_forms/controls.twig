@@ -1,0 +1,133 @@
+
+{% macro button(label, attr = {}, icon = null) %}
+    {% from '_forms/html.twig' import attr %}
+    
+    {% set attr = {class:'btn btn-default',value:1}|merge(attr) %}
+    
+    <button type="submit" {{ attr(attr) }}>
+        {%- if icon -%}
+            <i class="icon icon-{{ icon }}"></i>
+        {% endif -%}
+        {{- label -}}
+    </button>
+{% endmacro %}
+
+{% macro hidden(name, value, attr = {}, prefix = 'f_') %}
+    {% from '_forms/html.twig' import input %}
+    <div>
+        {{ input('hidden', name, value, attr, prefix ~ name) }}
+    </div>
+{% endmacro %}
+
+{% macro input(type, name, label, value, error, attr = {}, prefix = 'f_') %}
+    {% from '_forms/html.twig' import label, input %}
+    
+    <div class="form-group{% if error %} has-error{% endif %}">
+        {{ label(label, prefix ~ name, 'form-label') }}
+        <div class="form-controls">
+            {{ input(type, name, value, attr, prefix ~ name) }}
+            {{ _self.error(error, prefix ~ name) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro textarea(name, label, value, error, attr = {}, prefix = 'f_') %}
+    {% from '_forms/html.twig' import label, textarea %}
+    
+    <div class="form-group{% if error %} has-error{% endif %}">
+        {{ label(label, prefix ~ name, 'form-label') }}
+        <div class="form-controls">
+            {{ textarea(name, value, attr, prefix ~ name) }}
+            {{ _self.error(error, prefix ~ name) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro checkbox(name, label, value, error, attr = {}, prefix = 'f_') %}
+    {% from '_forms/html.twig' import label, input %}
+    
+    {%- if value -%}
+        {% set attr = {checked: 'checked'}|merge(attr) %}
+    {%- endif -%}
+    <div class="form-group{% if error %} has-error{% endif %}">
+        <div class="form-controls">
+            <label class="checkbox">
+                {{ input('checkbox', name, '1', attr, prefix ~ name) }}
+                {{ label }}
+            </label>
+            {{ _self.error(error, prefix ~ name) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro select(options, name, label, value, error, attr = {}, prefix = 'f_') %}
+    {% from '_forms/html.twig' import label, select %}
+    
+    <div class="form-group{% if error %} has-error{% endif %}">
+        {{ label(label, prefix ~ name, 'form-label') }}
+        <div class="form-controls">
+            {{ select(options, name, value, attr, prefix ~ name) }}
+            {{ _self.error(error, prefix ~ name) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro radio(options, name, label, value, error, attr = {}, prefix = 'f_') %}
+    {% from '_forms/html.twig' import attr, label, input %}
+
+    {% set value = value and options.getKey is defined ? options.getKey(value) : value %}
+    
+    <div class="form-group{% if error %} has-error{% endif %}">
+        {{ label(label, null, 'form-label') }}
+        <div class="form-controls">
+            {% for k,v in options %}
+                {%- if k == value -%}
+                    {% set attr2 = {checked: checked}|merge(attr) %}
+                {%- endif -%}
+
+                <label class="radio">
+                    {{ v }}
+                    {{ input('radio', name, k, attr2, prefix ~ name ~ '_' ~ k) }}
+                </label>
+                
+                {% set attr2 = {} %}
+            {% endfor %}
+            
+            {{ _self.error(error, prefix ~ name) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro checkboxes(options, name, label, value, error, attr = {}, prefix = 'f_') %}
+    {% from '_forms/html.twig' import attr, label, input %}
+    
+    {% set value = value and options.getKeys is defined ? options.getKeys(value) : value %}
+    
+    <div class="form-group{% if error %} has-error{% endif %}">
+        {{ label(label, null, 'form-label') }}
+        <div class="form-controls">
+            {% for k,v in options %}
+                {%- if k in value -%}
+                    {% set attr2 = {checked: checked}|merge(attr) %}
+                {%- endif -%}
+
+                <label class="checkbox">
+                    {{ v }}
+                    {{ input('checkbox', name~'[]', k, attr2, prefix ~ name ~ '_' ~ k) }}
+                </label>
+                
+                {% set attr2 = {} %}
+            {% endfor %}
+            
+            {{ _self.error(error, prefix ~ name) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro error(error, for) %}
+    {% if error %}
+        <div{% if for %} for="{{ for }}"{% endif %} class="help-block">
+            {{ error|i18n }}
+        </div>
+    {% endif %}
+{% endmacro %}

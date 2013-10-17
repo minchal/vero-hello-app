@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Start application CLI.
+ * 
+ * @author Michał Pawłowski <michal@pawlowski.be>
+ */
+
+$app = require __DIR__.'/bootstrap.php';
+$app -> run('\App\Controller\Console');

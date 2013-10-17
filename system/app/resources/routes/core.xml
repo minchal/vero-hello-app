@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes namespace="App\Action">
+	<route id="index">
+		<url></url>
+	</route>
+    
+	<route id="thumb">
+		<url>thumb</url>
+	</route>
+    
+	<route id="validate">
+		<url>validate/{entity}/{id:int:}</url>
+	</route>
+    
+	<route id="selftest">
+		<url>selftest</url>
+	</route>
+</routes>

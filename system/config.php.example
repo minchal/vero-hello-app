@@ -1,0 +1,42 @@
+<?php
+
+return [
+	'debug'    => true,
+	'locale'   =>'pl_PL',
+	'language' =>'pl',
+    'keys' => [
+        'debug' => '',
+        'salt'  => ''
+    ],
+	'app' => [
+		'project' => 'VeroCMS',
+        'admin'   => 'admin@example.com',
+        'view'    => [
+            'brand'        => true,
+            'analyticsKey' => 'localhost',
+        ],
+	],
+	'log' => [
+		'level' => 'info',
+	],
+	'routing' => [
+		'base' => '/vero/',
+	],
+	'database' => [
+        'prefix'   => '',
+		'dbname'   => 'vero',
+		'user'     => 'vero',
+		'password' => '',
+		'host'     => 'localhost',
+		'driver'   => 'pdo_mysql',
+		'driverOptions' => [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'],
+	],
+    'mail' => [
+        'from' => 'no-reply@example.com',
+        'transport' => 'smtp',
+        'host' => '',
+        'port' => '',
+        'username' => '',
+        'password' => ''
+    ],
+];

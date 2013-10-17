@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ i18n.lang() }}">
+<head>
+    {% block meta %}
+        <title>{% if title %}{{ title }} - {% endif %}{{ settings.get('meta_title', 'VeroCMS') }}</title>
+        <base href="{{ url().setPrefix('').full() }}"/>
+	{% endblock %}
+    
+    {% block stylesheets %}
+        
+    {% endblock %}
+        
+    {% block javascripts %}
+        
+    {% endblock %}
+    
+    <link rel="Shortcut icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    {% block body %}
+        
+    {% endblock %}
+</body>
+</html>
