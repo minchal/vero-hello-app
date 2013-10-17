@@ -14,7 +14,7 @@ Installation
 Get application code, e.g.:
 
 ```bash
-git clone git@github.com:minchal/vero-hello-app.git
+git clone https://github.com/minchal/vero-hello-app.git
 ```
 
 Install [Composer](https://getcomposer.org) and dependencies:
