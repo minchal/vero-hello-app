@@ -38,8 +38,8 @@ class Doctrine extends LazyService
         }
 
         $evm = new EventManager();
-        $evm -> addEventSubscriber(new TreeListener());
-        $evm -> addEventSubscriber(new LoggableListener($c));
+        //$evm -> addEventSubscriber(new TreeListener());
+        //$evm -> addEventSubscriber(new LoggableListener($c));
 
         $em = EntityManager::create($conf -> get('database'), $config, $evm);
         $em -> getConnection() -> getDatabasePlatform() -> registerDoctrineTypeMapping('enum', 'string');

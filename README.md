@@ -40,8 +40,6 @@ sudo ln -s . /var/www/vero/
 
 and go to [http://localhost/vero/](http://localhost/vero/)
 
-If you need Vero in other base path than http://localhost/vero/ edit variable 'routing.base' in your config.php.
-
 Authors
 -------
 

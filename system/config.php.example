@@ -16,9 +16,6 @@ return [
 	'log' => [
 		'level' => 'info',
 	],
-	'routing' => [
-		'base' => '/vero/',
-	],
 	'database' => [
         'prefix'   => '',
 		'dbname'   => 'vero',
