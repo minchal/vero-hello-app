@@ -2,8 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 <file source-language="en" datatype="plaintext">
 <body>
-	<trans-unit><source>test</source><target>{0,plural,one{Masz jedną nową wiadomość}few{Masz {0,number} nowe wiadomości}other{Masz {0,number} nowych wiadomości}}.</target></trans-unit>
-    
+    <trans-unit><source>index</source><target>Strona główna</target></trans-unit>
 	<trans-unit><source>sitemap</source><target>Mapa strony</target></trans-unit>
     
 	<trans-unit><source>yes</source><target>Tak</target></trans-unit>
@@ -14,17 +13,38 @@
 	<trans-unit><source>delete</source><target>Usuń</target></trans-unit>
 	<trans-unit><source>copy</source><target>Kopiuj</target></trans-unit>
 	<trans-unit><source>details</source><target>Szczegóły</target></trans-unit>
+    <trans-unit><source>more</source><target>Więcej</target></trans-unit>
 	<trans-unit><source>preview</source><target>Podgląd</target></trans-unit>
+	<trans-unit><source>selected</source><target>Zaznaczone:</target></trans-unit>
+    
+	<trans-unit><source>from</source><target>Od</target></trans-unit>
+	<trans-unit><source>to</source><target>Do</target></trans-unit>
+	<trans-unit><source>search</source><target>Szukaj</target></trans-unit>
+	<trans-unit><source>history</source><target>Historia zmian</target></trans-unit>
+	<trans-unit><source>revert</source><target>Przywróć...</target></trans-unit>
+	<trans-unit><source>order info</source><target>Przeciągaj pozycje aby zmieniać ich kolejność.</target></trans-unit>
+    
+    <trans-unit><source>search all</source><target>-- Brak filtra --</target></trans-unit>
+    
 	<trans-unit><source>saved</source><target>Zmiany zostały zapisane pomyślnie.</target></trans-unit>
+    
+	<trans-unit><source>delete title</source><target>Usuń</target></trans-unit>
+	<trans-unit><source>delete question</source><target>Czy jesteś pewien, że chcesz usunąć: {0}?</target></trans-unit>
+	<trans-unit><source>delete question multi</source><target>Czy jesteś pewien, że chcesz usunąć wybrane elementy ({0})?</target></trans-unit>
+	<trans-unit><source>delete question modal</source><target>Czy jesteś pewien, że chcesz usunąć element?</target></trans-unit>
+	<trans-unit><source>delete question modal multi</source><target>Czy jesteś pewien, że chcesz usunąć wybrane elementy?</target></trans-unit>
+	<trans-unit><source>delete question modal none</source><target>Wybierz elementy! </target></trans-unit>
+	<trans-unit><source>delete ok</source><target>Elementy zostały usunięte.</target></trans-unit>
     
 	<trans-unit><source>error</source><target>Błąd</target></trans-unit>
 	<trans-unit><source>error title</source><target>Wystąpił błąd</target></trans-unit>
 	<trans-unit><source>not found</source><target>Podana strona nie istnieje. Upewnij się, że wprowadzony adres jest prawidłowy.</target></trans-unit>
     <trans-unit><source>access denied</source><target>Nie posiadasz wymaganych uprawnień, aby wejść na tę stronę.</target></trans-unit>
+    <trans-unit><source>access denied guest</source><target><![CDATA[Nie posiadasz wymaganych uprawnień, aby wejść na tę stronę.<br /> Jeśli posiadasz konto w serwisie <a href="{0}">zaloguj się</a>.]]></target></trans-unit>
 	<trans-unit><source>item not found</source><target>Nie znaleziono takiego elementu.</target></trans-unit>
     
-	<trans-unit><source>error 403 guest</source><target><![CDATA[Nie posiadasz wymaganych uprawnień, aby wejść na tę stronę.<br /> Jeśli posiadasz konto w serwisie <a href="{0}">zaloguj się</a>.]]></target></trans-unit>
-	
+	<trans-unit><source>error demo</source><target>Funkcja nie jest dostępna na stronie demonstracyjnej.</target></trans-unit>
+    
 	<trans-unit><source>error token</source><target>Formularz, który próbujesz użyć, stracił ważność lub został już wysłany.</target></trans-unit>
 	<trans-unit><source>error csrf</source><target>Nie posiadasz uprawnień, aby użyć tego formularza.</target></trans-unit>
 	
@@ -39,22 +59,31 @@
 	<trans-unit><source>validator integer</source><target>Proszę o podanie prawidłowej liczby.</target></trans-unit>
 	<trans-unit><source>validator number</source><target>Proszę o podanie prawidłowej liczby.</target></trans-unit>
 	<trans-unit><source>validator range scope</source><target>Proszę o podanie wartości z przedziału od {0} do {1}.</target></trans-unit>
-	<trans-unit><source>validator range min</source><target>Proszę o podanie wartości mniejszej bądź równej {0}.</target></trans-unit>
-	<trans-unit><source>validator range max</source><target>Proszę o podanie wartości większej bądź równej {0}.</target></trans-unit>
+	<trans-unit><source>validator range min</source><target>Proszę o podanie wartości większej bądź równej {0}.</target></trans-unit>
+	<trans-unit><source>validator range max</source><target>Proszę o podanie wartości mniejszej bądź równej {0}.</target></trans-unit>
 	<trans-unit><source>validator precision</source><target>Wartość liczbowa może mieć od {0} do {1} cyfr po przecinku.</target></trans-unit>
 	<trans-unit><source>validator password</source><target>Hasło zawiera niedozwolone znaki.</target></trans-unit>
 	<trans-unit><source>validator repeat</source><target>Proszę o podanie tej samej wartości ponownie.</target></trans-unit>
 	<trans-unit><source>validator time</source><target>Proszę o podanie czasu w formacie GG:MM:SS.</target></trans-unit>
-	<trans-unit><source>validator regexp</source><target>Proszę o podanie wartości w formacie "{0}".</target></trans-unit>
+	<trans-unit><source>validator regexp</source><target>Proszę o podanie wartości w formacie {0}.</target></trans-unit>
     <trans-unit><source>validator numstr</source><target>Proszę o podanie wartości zawierającej tylko cyfry i '-'.</target></trans-unit>
-	<trans-unit><source>validator idstr</source><target>Proszę o podanie wartości zawierającej tylko litery, cyfry, "_" oraz "-".</target></trans-unit>
+	<trans-unit><source>validator idstr</source><target>Proszę o podanie wartości zawierającej tylko litery, cyfry lub znaki: {0}.</target></trans-unit>
 	<trans-unit><source>validator idstr letter first</source><target>Pierwszy znak musi być literą.</target></trans-unit>
     <trans-unit><source>validator unique</source><target>Podana wartość jest już zajęta.</target></trans-unit>
+	<trans-unit><source>validator set</source><target>Wartość pola musi zawierać się w określonym zakresie.</target></trans-unit>
+	<trans-unit><source>validator equals</source><target>Wartość pola jest nieprawidłowa.</target></trans-unit>
 	
-	<trans-unit><source>upload error</source><target>Wystąpił błąd podczas wysyłania pliku.</target></trans-unit>
+    <trans-unit><source>upload error required</source><target>Przesłanie pliku jest wymagane.</target></trans-unit>
+	<trans-unit><source>upload error invalid</source><target>Wysłany plik jest nieprawidłowy.</target></trans-unit>
 	<trans-unit><source>upload error move</source><target>Wystąpił błąd podczas wysyłania pliku. Plik nie mógł być zapisany na serwerze.</target></trans-unit>
-	<trans-unit><source>upload error required</source><target>Przesłanie pliku jest wymagane.</target></trans-unit>
-	<trans-unit><source>upload error size</source><target>Wysłany plik jest zbyt duży.</target></trans-unit>
+	<trans-unit><source>upload error 1</source><target>Wysłany plik jest zbyt duży.</target></trans-unit>
+    <trans-unit><source>upload error 2</source><target>Wysłany plik jest zbyt duży.</target></trans-unit>
+    <trans-unit><source>upload error 3</source><target>Wysłany plik nie został przesłany w całości.</target></trans-unit>
+    <trans-unit><source>upload error 4</source><target>Wysłany plik nie został przesłany prawidłowo.</target></trans-unit>
+    <trans-unit><source>upload error 6</source><target>Wysłany plik nie został przesłany prawidłowo. Błąd serwera.</target></trans-unit>
+    <trans-unit><source>upload error 7</source><target>Wysłany plik nie został przesłany prawidłowo. Błąd serwera.</target></trans-unit>
+    <trans-unit><source>upload error 8</source><target>Wysłany plik nie został przesłany prawidłowo. Błąd serwera.</target></trans-unit>
+    
 	<trans-unit><source>upload error text</source><target>Plik musi być plikiem tekstowym.</target></trans-unit>
 	<trans-unit><source>upload error image</source><target>Plik musi być obrazem typu JPG, GIF lub PNG.</target></trans-unit>
 	

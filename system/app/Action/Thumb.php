@@ -24,8 +24,10 @@ class Thumb extends Web\Action\Basic
         }
 
         list(, $format) = explode('/', $file -> mimeType());
+        $width = max(1, (int) $req -> get('w', 200));
+        $height = max(1, (int) $req -> get('h', $width));
 
-        $hash = md5(implode('_', [$file -> getPathname(), $req -> get('f')]));
+        $hash = md5(implode('_', [$file -> getPathname(), $req -> get('f'), $width, $height]));
 
         $cache = $this -> get('app') -> path(
             'var/thumbs/' . substr($hash, 0, 2) . '/' . substr($hash, 2) . '.' . $format
@@ -35,7 +37,11 @@ class Thumb extends Web\Action\Basic
             Directory::ensure(dirname($cache));
 
             $filter = $this -> getFilter($req -> get('f'));
-            $thumb = $filter($this -> get('imagine') -> open($file -> getPathname()));
+            $thumb = $filter(
+                $this -> get('imagine') -> open($file -> getPathname()),
+                $width,
+                $height
+            );
             $thumb -> save($cache);
         }
 
@@ -47,21 +53,12 @@ class Thumb extends Web\Action\Basic
     private function getFilter($name)
     {
         $filters = [
-            'news' => function($image) {
-            return $image -> thumbnail(new Box(200, 200), ImageInterface::THUMBNAIL_OUTBOUND);
-        },
-            'gallery-admin' => function($image) {
-            return $image -> thumbnail(new Box(200, 200), ImageInterface::THUMBNAIL_OUTBOUND);
-        },
-            'files-show' => function($image) {
-            return $image -> thumbnail(new Box(500, 500), ImageInterface::THUMBNAIL_INSET);
-        },
-            'files-thumb' => function($image) {
-            return $image -> thumbnail(new Box(150, 150), ImageInterface::THUMBNAIL_OUTBOUND);
-        },
-            'files-icon' => function($image) {
-            return $image -> thumbnail(new Box(100, 100), ImageInterface::THUMBNAIL_OUTBOUND);
-        },
+            '' => function ($image, $w, $h) {
+                return $image -> thumbnail(new Box($w, $h), ImageInterface::THUMBNAIL_INSET);
+            },
+            'crop' => function ($image, $w, $h) {
+                return $image -> thumbnail(new Box($w, $h), ImageInterface::THUMBNAIL_OUTBOUND);
+            },
         ];
 
         if (!isset($filters[$name])) {

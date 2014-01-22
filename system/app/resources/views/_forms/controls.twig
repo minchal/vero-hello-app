@@ -72,7 +72,7 @@
     </div>
 {% endmacro %}
 
-{% macro radio(options, name, label, value, error, attr = {}, prefix = 'f_') %}
+{% macro radio(options, name, label, value, error, attr = {}, prefix = 'f_', inline = false) %}
     {% from '_forms/html.twig' import attr, label, input %}
 
     {% set value = value and options.getKey is defined ? options.getKey(value) : value %}
@@ -85,9 +85,9 @@
                     {% set attr2 = {checked: checked}|merge(attr) %}
                 {%- endif -%}
 
-                <label class="radio">
-                    {{ v }}
+                <label class="radio{% if inline %}-inline{% endif %}">
                     {{ input('radio', name, k, attr2, prefix ~ name ~ '_' ~ k) }}
+                    {{ v }}
                 </label>
                 
                 {% set attr2 = {} %}
@@ -98,7 +98,7 @@
     </div>
 {% endmacro %}
 
-{% macro checkboxes(options, name, label, value, error, attr = {}, prefix = 'f_') %}
+{% macro checkboxes(options, name, label, value, error, attr = {}, prefix = 'f_', inline = false) %}
     {% from '_forms/html.twig' import attr, label, input %}
     
     {% set value = value and options.getKeys is defined ? options.getKeys(value) : value %}
@@ -111,9 +111,9 @@
                     {% set attr2 = {checked: checked}|merge(attr) %}
                 {%- endif -%}
 
-                <label class="checkbox">
-                    {{ v }}
+                <label class="checkbox{% if inline %}-inline{% endif %}">
                     {{ input('checkbox', name~'[]', k, attr2, prefix ~ name ~ '_' ~ k) }}
+                    {{ v }}
                 </label>
                 
                 {% set attr2 = {} %}
@@ -128,6 +128,16 @@
     {% if error %}
         <div{% if for %} for="{{ for }}"{% endif %} class="help-block">
             {{ error|i18n }}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro error_group(error, for) %}
+    {% if error %}
+        <div class="form-group has-error">
+            <div class="form-controls">
+                {{ _self.error(error, for) }}
+            </div>
         </div>
     {% endif %}
 {% endmacro %}

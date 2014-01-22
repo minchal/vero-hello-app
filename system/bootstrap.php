@@ -7,6 +7,5 @@
  */
 
 require __DIR__.'/app/autoload.php';
-require __DIR__.'/app/services.php';
 
 return new \App\App(new \Vero\Config\FileArray(__DIR__.'/config.php'));

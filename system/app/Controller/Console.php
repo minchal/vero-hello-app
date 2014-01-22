@@ -10,6 +10,7 @@ use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
 use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Helper\HelperSet;
+
 /**
  * Application console.
  * Currently only Doctrine console.
@@ -29,6 +30,10 @@ class Console extends Controller
 
         ConsoleRunner::addCommands($app);
         DoctrineConsoleRunner::addCommands($app);
+
+        $app -> addCommands([
+            new \App\Helper\InitCommand(),
+        ]);
 
         $app -> run();
     }

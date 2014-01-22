@@ -1,96 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title><?=$project?> - Application error</title>
-	<style type="text/css">
-		body {
-			background: #eee; padding: 0; margin: 0;
-			font: 10pt normal Arial, Verdana, sans-serif; color: #333;
-		}
-		h1 {font-size: 18pt; padding: 0 0 1em 0; margin: 0; color: #666;}
-		h2 {font-size: 13pt; padding: 0 0 1em 0; margin: 0;}
-		p {margin: 0; padding: 0 0 1em 0; line-height: 1.5em;}
+    <meta charset="utf-8">
+    <title><?= $project ?> - Application error</title>
+    <style type="text/css">
+        body {
+            background: #eee; padding: 0; margin: 0;
+            font: 10pt normal Arial, Verdana, sans-serif; color: #333;
+        }
+        h1 {font-size: 18pt; padding: 0 0 1em 0; margin: 0; color: #666;}
+        h2 {font-size: 13pt; padding: 0 0 1em 0; margin: 0;}
+        p {margin: 0; padding: 0 0 1em 0; line-height: 1.5em;}
         a {text-decoration: none;}
         a:hover {text-decoration: underline;}
-		pre {
-			margin: 0 0 1em 0; padding: 5px; font-size: 10pt; color: #a00; 
-			background: #eee; border: dotted 1px #777; overflow: auto;
-		}
-		h2 span {font-size: 11pt; font-weight: normal;}
-		#content {
-			width: 750px; margin: 50px auto 0 auto; padding: 15px;
-			background: #fff; border: solid 1px #777;
-		}
-		footer {
-			width: 750px; margin: 0 auto; padding: 15px;  
-			font-size: 9pt; background: #fff; border: solid 1px #777; border-top: none;
-		}
-	</style>
-	<script type="text/javascript">
-		function toggable() {
-			var showToggable = document.getElementById('showToggable');
-			var block = document.getElementById('toggable');
-			if (block.style.display === '') {
-				block.style.display = 'none';
-				showToggable.style.display = '';
-				showToggable.innerHTML = '[+]';
-			} else {
-				block.style.display = '';
-				showToggable.innerHTML = '[-]';
-			}
-		}
-	</script>
+        pre {
+            margin: 0 0 1em 0; padding: 5px; font-size: 10pt; color: #a00; 
+            background: #eee; border: dotted 1px #777; overflow: auto;
+        }
+        h2 span {font-size: 11pt; font-weight: normal;}
+        #content {
+            width: 750px; margin: 50px auto 0 auto; padding: 15px;
+            background: #fff; border: solid 1px #777;
+        }
+        footer {
+            width: 750px; margin: 0 auto; padding: 15px;  
+            font-size: 9pt; background: #fff; border: solid 1px #777; border-top: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function toggable() {
+            var showToggable = document.getElementById('showToggable');
+            var block = document.getElementById('toggable');
+            if (block.style.display === '') {
+                block.style.display = 'none';
+                showToggable.style.display = '';
+                showToggable.innerHTML = '[+]';
+            } else {
+                block.style.display = '';
+                showToggable.innerHTML = '[-]';
+            }
+        }
+    </script>
 </head>
 <body onload="toggable();">
-    
+
     <?php if ($debug): ?>
-    
+
         <section id="content">
             <h1>Application error</h1>
-            <h2>Exception [<?=$exception?>]:</h2>
+            <h2>Exception [<?= $exception ?>]:</h2>
 
-            <pre><code><?=$message?></code></pre>
+            <pre><code><?= $message ?></code></pre>
 
-            <p>In: <strong><?=$file?>:<?=$line?></strong></p>
+            <p>In: <strong><?= $file ?>:<?= $line ?></strong></p>
 
             <h2>Stack Trace <span id="showToggable" style="display: none;" onclick="toggable();"></span></h2>
-            <pre id="toggable"><code><?=htmlspecialchars($trace)?></code></pre>
+            <pre id="toggable"><code><?= htmlspecialchars($trace) ?></code></pre>
         </section>
         <footer>
-            <?=sprintf('Time: %01.4fs; Autoload: %d; Memory: %dKB', 
-                microtime(true)-$_SERVER['REQUEST_TIME_FLOAT'], count(get_included_files()), (memory_get_usage(true)/1024))?>
-            <?=($buffer ? '<pre>'.$buffer.'</pre>' : '')?>
+            <?= sprintf(
+                    'Time: %01.4fs; Autoload: %d; Memory: %dKB',
+                    microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'],
+                    count(get_included_files()),
+                    (memory_get_usage(true) / 1024)
+                )
+            ?>
+            <?= ($buffer ? '<pre>' . $buffer . '</pre>' : '') ?>
         </footer>
-    
+
     <?php else: ?>
-    
+
         <div id="content">
             <h1>Błąd aplikacji</h1>
             <p>Przepraszamy, ale wystąpił błąd uniemożliwiający wyświetlenie tej strony.
-            <a href="javascript:location.reload(true)">Spróbuj ponownie</a> za chwilę 
-            lub <a href="mailto:<?=
-                $admin .'?'. 
+                <a href="javascript:location.reload(true)">Spróbuj ponownie</a> za chwilę 
+                lub <a href="mailto:<?=
+                $admin . '?' .
                 http_build_query([
-                    'subject'=>'Błąd na '.$request,
-                    'body'=>"Zgłaszam błąd:\n\n".(isset($crypted) ? $crypted : '')
-                ], '', '&amp;', PHP_QUERY_RFC3986)
-            ?>">powiadom</a> administratora.</p>
-            
+                    'subject' => 'Błąd na ' . $request,
+                    'body' => "Zgłaszam błąd:\n\n" . (isset($crypted) ? $crypted : '')
+                    ], '', '&amp;', PHP_QUERY_RFC3986)
+                ?>">powiadom</a> administratora.</p>
+
             <p>Możesz też wrócić do:<br />
-                <a href="<?=$basepath?>">strony głównej</a> lub
+                <a href="<?= $basepath ?>">strony głównej</a> lub
                 <a href="javascript:history.go(-1)">poprzedniej strony</a>.
             </p>
-            
+
             <?php if (isset($crypted) && $crypted): ?>
                 <p><strong>Dodatkowe informacje <span id="showToggable" style="display: none;" onclick="toggable();"></span></strong></p>
                 <div id="toggable">
                     <p>W ramach kontaktu z administratorem, przekaż poniższą treść:</p>
-                    <pre style="word-wrap:break-word;"><?=$crypted; ?></pre>
+                    <pre style="word-wrap:break-word;"><?= $crypted; ?></pre>
                 </div>
             <?php endif; ?>
         </div>
-    
+
     <?php endif; ?>
 </body>
 </html>

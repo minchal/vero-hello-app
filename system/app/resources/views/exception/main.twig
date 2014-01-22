@@ -1,6 +1,6 @@
 {% extends "_layout/main.twig" %}
 
 {% block content %}
-    <h2>{{ 'error title'|i18n([],'global') }}</h2>
-	<div class="alert alert-danger">{{ message }}</div>
+    <h2>{{ 'error title'|i18ng }}</h2>
+	<div class="alert alert-danger">{{ message|raw }}</div>
 {% endblock %}

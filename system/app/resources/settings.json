@@ -6,5 +6,16 @@
     "meta_keywords": "s\u0142owa, kluczowe",
     "contact_to": "michal@pawlowski.be",
     "analytics_id": "UA-10540131-1",
-    "analytics": true
+    "analytics": true,
+    "shop_currencies": [
+        "PLN",
+        "USD",
+        "EUR"
+    ],
+    "shop_vat": [
+        23,
+        8,
+        0
+    ],
+    "analytics_key": "michal_local"
 }

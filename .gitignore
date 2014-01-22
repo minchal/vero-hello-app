@@ -1,7 +1,4 @@
 composer.lock
 system/config.*
 !system/config.*.example
-/nbproject/
-/.buildpath
-/.project
-/.settings
+build.local.properties

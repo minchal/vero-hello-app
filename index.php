@@ -18,4 +18,4 @@ $app = require __DIR__.'/system/bootstrap.php';
 $app -> run();
 
 //var_dump(microtime(true)-$_SERVER['REQUEST_TIME_FLOAT']);
-//print_r(get_included_files());
+//var_dump(get_included_files());

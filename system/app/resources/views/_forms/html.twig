@@ -13,19 +13,19 @@
 
 {% macro input(type, name, value, attr = {}, id = null) %}
     {% if type in ['text','email','password','number'] %}
-        {% set attr = attr|merge({class: 'form-control'}) %}
+        {% set attr = attr|merge({class: 'form-control '~attr.class}) %}
     {% endif %}
     <input type="{{ type }}" name="{{ name }}" {%if id %}id="{{ id }}" {% endif %}value="{{ value }}" {{ _self.attr(attr) }} />
 {% endmacro %}
 
 {% macro textarea(name, value, attr = {}, id = null) %}
-    {% set attr = attr|merge({class: 'form-control'}) %}
+    {% set attr = attr|merge({class: 'form-control '~attr.class}) %}
     <textarea name="{{ name }}" {%if id %}id="{{ id }}" {% endif %}{{ _self.attr(attr) }}>{{ value }}</textarea>
 {% endmacro %}
 
 {% macro select(options, name, value, attr = {}, id = null) %}
     {% set value = value and options.getKey is defined ? options.getKey(value) : value %}
-    {% set attr = attr|merge({class: 'form-control'}) %}
+    {% set attr = attr|merge({class: 'form-control '~attr.class}) %}
     
     <select name="{{ name }}" {%if id %}id="{{ id }}" {% endif %}{{ _self.attr(attr) }}>
          {% for k,v in options %}
