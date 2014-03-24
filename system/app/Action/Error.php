@@ -7,7 +7,7 @@ namespace App\Action;
 
 use Vero\Web;
 
-class Error extends Web\Action\ExceptionHandler
+class Error extends Web\ExceptionHandler
 {
     public function getExceptionResponseBody(\Exception $e)
     {
@@ -17,10 +17,10 @@ class Error extends Web\Action\ExceptionHandler
             class_exists('App\Entity\User\User') &&
             $this -> get('auth') -> getUser() -> isGuest()
         ) {
-            $response -> message = $this -> i18ng(
-                'access denied guest',
-                [$this -> url('user/login') -> setGet('return', $this -> addReturnUrl())]
-            );
+            $url = $this -> url($this -> isPanelRequest() ? 'user/admin/login' : 'user/login')
+                -> setGet('return', $this -> addReturnUrl());
+
+            $response -> message = $this -> i18ng('access denied guest', [$url]);
         }
 
         return $response;
@@ -28,17 +28,16 @@ class Error extends Web\Action\ExceptionHandler
 
     protected function getExceptionTemplate(\Exception $e)
     {
-        // use admin template only if exists
-        if (file_exists($this -> get('app') -> path('resources/views/exception/admin.twig'))) {
-            if (strpos($this -> get('request') -> query, 'admin') === 0) {
-                if ($this -> get('acl') -> check('admin')) {
-                    return 'exception/admin.twig';
-                }
-
-                return 'exception/admin_guest.twig';
-            }
+        if ($this -> isPanelRequest()) {
+            return 'exception/panel.twig';
         }
 
         return 'exception/main.twig';
+    }
+
+    protected function isPanelRequest()
+    {
+        // use panel templates and actions only if panel is installed
+        return class_exists('App\Action\System\Overview') && strpos($this -> get('request') -> query, 'panel') === 0;
     }
 }

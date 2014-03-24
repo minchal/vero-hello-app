@@ -10,7 +10,7 @@ use Vero\Web;
 use Vero\Validate\Validator;
 use Vero\Validate\RemotableContainerInterface;
 
-class Validate extends Web\Action\Session
+class Validate extends Web\Action
 {
     public function run(Web\Request $request)
     {

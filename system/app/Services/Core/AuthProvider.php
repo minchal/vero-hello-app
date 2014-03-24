@@ -12,8 +12,10 @@ class AuthProvider extends LazyService
 {
     protected function create(Container $c)
     {
-        $provider = $c -> get('doctrine') -> getRepository('App\Entity\User\User');
-        $provider -> setGlobalSalt($c -> get('config') -> get('keys.salt'));
-        return $provider;
+        if (!function_exists('password_hash')) {
+            require $c -> get('app') -> path('vendor/ircmaxell/password-compat/lib/password.php');
+        }
+        
+        return $c -> get('doctrine') -> getRepository('App\Entity\User\User');
     }
 }

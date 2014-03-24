@@ -29,15 +29,6 @@ class Flash extends Widget
         return [];
     }
 
-    public function get($type)
-    {
-        if ($this -> bag) {
-            return $this -> bag -> delete($type);
-        }
-
-        return null;
-    }
-
     public function has($type)
     {
         if ($this -> bag) {

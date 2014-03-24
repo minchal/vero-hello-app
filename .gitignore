@@ -1,4 +1,8 @@
 composer.lock
 system/config.*
 !system/config.*.example
+system/app/resources/settings.json
+system/app/resources/**/*.orig
+system/app/resources/**/*.last
+system/app/resources/**/*.dist
 build.local.properties

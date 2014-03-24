@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file source-language="pl" target-language="pl" datatype="plaintext">
+<body>
+    <trans-unit id="index"><source>Strona główna</source></trans-unit>
+    
+    <trans-unit id="panel logout"><source>Wyloguj</source></trans-unit>
+	<trans-unit id="panel profile"><source>Profil</source></trans-unit>
+	<trans-unit id="panel menu cms"><source>CMS</source></trans-unit>
+    
+	<trans-unit id="yes"><source>Tak</source></trans-unit>
+	<trans-unit id="no"><source>Nie</source></trans-unit>
+	<trans-unit id="ok"><source>OK</source></trans-unit>
+	<trans-unit id="edit"><source>Edytuj</source></trans-unit>
+	<trans-unit id="add"><source>Dodaj</source></trans-unit>
+	<trans-unit id="delete"><source>Usuń</source></trans-unit>
+	<trans-unit id="copy"><source>Kopiuj</source></trans-unit>
+	<trans-unit id="details"><source>Szczegóły</source></trans-unit>
+    <trans-unit id="more"><source>Więcej</source></trans-unit>
+	<trans-unit id="preview"><source>Podgląd</source></trans-unit>
+	<trans-unit id="selected"><source>Zaznaczone:</source></trans-unit>
+	<trans-unit id="check all"><source>Zaznacz wszystkie</source></trans-unit>
+	<trans-unit id="uncheck all"><source>Odznacz wszystkie</source></trans-unit>
+    
+	<trans-unit id="from"><source>Od</source></trans-unit>
+	<trans-unit id="to"><source>Do</source></trans-unit>
+	<trans-unit id="search"><source>Szukaj</source></trans-unit>
+	<trans-unit id="history"><source>Historia zmian</source></trans-unit>
+	<trans-unit id="revert"><source>Przywróć...</source></trans-unit>
+	<trans-unit id="order info"><source>Przeciągaj pozycje aby zmieniać ich kolejność.</source></trans-unit>
+    <trans-unit id="dropzone"><source>Upuść plik, aby go przesłać.</source></trans-unit>
+    
+    <trans-unit id="search all"><source>-- Brak filtra --</source></trans-unit>
+    
+	<trans-unit id="saved"><source>Zmiany zostały zapisane pomyślnie.</source></trans-unit>
+    
+	<trans-unit id="delete title"><source>Usuń</source></trans-unit>
+	<trans-unit id="delete question"><source>Czy jesteś pewien, że chcesz usunąć: {0}?</source></trans-unit>
+	<trans-unit id="delete question multi"><source>Czy jesteś pewien, że chcesz usunąć wybrane elementy ({0})?</source></trans-unit>
+	<trans-unit id="delete question modal"><source>Czy jesteś pewien, że chcesz usunąć element?</source></trans-unit>
+	<trans-unit id="delete question modal multi"><source>Czy jesteś pewien, że chcesz usunąć wybrane elementy?</source></trans-unit>
+	<trans-unit id="delete question modal none"><source>Wybierz elementy! </source></trans-unit>
+	<trans-unit id="delete ok"><source>Elementy zostały usunięte.</source></trans-unit>
+    
+	<trans-unit id="error"><source>Błąd</source></trans-unit>
+	<trans-unit id="error title"><source>Wystąpił błąd</source></trans-unit>
+	<trans-unit id="not found"><source>Podana strona nie istnieje. Upewnij się, że wprowadzony adres jest prawidłowy.</source></trans-unit>
+    <trans-unit id="access denied"><source>Nie posiadasz wymaganych uprawnień, aby wejść na tę stronę.</source></trans-unit>
+    <trans-unit id="access denied guest"><source><![CDATA[Nie posiadasz wymaganych uprawnień, aby wejść na tę stronę.<br /> Jeśli posiadasz konto w serwisie <a href="{0}">zaloguj się</a>.]]></source></trans-unit>
+	<trans-unit id="item not found"><source>Nie znaleziono takiego elementu.</source></trans-unit>
+    
+	<trans-unit id="error demo"><source>Funkcja nie jest dostępna na stronie demonstracyjnej.</source></trans-unit>
+    
+	<trans-unit id="error token"><source>Formularz, który próbujesz użyć, stracił ważność lub został już wysłany.</source></trans-unit>
+	<trans-unit id="error csrf"><source>Nie posiadasz uprawnień, aby użyć tego formularza.</source></trans-unit>
+	
+	<trans-unit id="validator required"><source>To pole jest wymagane.</source></trans-unit>
+	<trans-unit id="validator length compare"><source>Proszę o podanie wartości o długości {0} znaków.</source></trans-unit>
+	<trans-unit id="validator length scope"><source>Proszę o podanie wartości o długości od {0} do {1} znaków.</source></trans-unit>
+	<trans-unit id="validator length min"><source>Proszę o podanie przynajmniej {0} znaków.</source></trans-unit>
+	<trans-unit id="validator length max"><source>Proszę o podanie nie więcej niż {0} znaków.</source></trans-unit>
+	<trans-unit id="validator date"><source>Proszę o podanie prawidłowej daty.</source></trans-unit>
+	<trans-unit id="validator datetime"><source>Proszę o podanie prawidłowej daty i czasu.</source></trans-unit>
+	<trans-unit id="validator email"><source>Proszę o podanie prawidłowego adresu email.</source></trans-unit>
+	<trans-unit id="validator integer"><source>Proszę o podanie prawidłowej liczby.</source></trans-unit>
+	<trans-unit id="validator number"><source>Proszę o podanie prawidłowej liczby.</source></trans-unit>
+	<trans-unit id="validator range scope"><source>Proszę o podanie wartości z przedziału od {0} do {1}.</source></trans-unit>
+	<trans-unit id="validator range min"><source>Proszę o podanie wartości większej bądź równej {0}.</source></trans-unit>
+	<trans-unit id="validator range max"><source>Proszę o podanie wartości mniejszej bądź równej {0}.</source></trans-unit>
+	<trans-unit id="validator precision"><source>Wartość liczbowa może mieć od {0} do {1} cyfr po przecinku.</source></trans-unit>
+	<trans-unit id="validator password"><source>Hasło zawiera niedozwolone znaki.</source></trans-unit>
+	<trans-unit id="validator repeat"><source>Proszę o podanie tej samej wartości ponownie.</source></trans-unit>
+	<trans-unit id="validator time"><source>Proszę o podanie czasu w formacie GG:MM:SS.</source></trans-unit>
+	<trans-unit id="validator regexp"><source>Proszę o podanie wartości w formacie {0}.</source></trans-unit>
+    <trans-unit id="validator numstr"><source>Proszę o podanie wartości zawierającej tylko cyfry i '-'.</source></trans-unit>
+	<trans-unit id="validator idstr"><source>Proszę o podanie wartości zawierającej tylko litery, cyfry lub znaki: {0}.</source></trans-unit>
+	<trans-unit id="validator idstr letter first"><source>Pierwszy znak musi być literą.</source></trans-unit>
+    <trans-unit id="validator unique"><source>Podana wartość jest już zajęta.</source></trans-unit>
+	<trans-unit id="validator set"><source>Wartość pola musi zawierać się w określonym zakresie.</source></trans-unit>
+	<trans-unit id="validator equals"><source>Wartość pola jest nieprawidłowa.</source></trans-unit>
+	
+    <trans-unit id="upload error required"><source>Przesłanie pliku jest wymagane.</source></trans-unit>
+	<trans-unit id="upload error invalid"><source>Wysłany plik jest nieprawidłowy.</source></trans-unit>
+	<trans-unit id="upload error move"><source>Wystąpił błąd podczas wysyłania pliku. Plik nie mógł być zapisany na serwerze.</source></trans-unit>
+	<trans-unit id="upload error 1"><source>Wysłany plik jest zbyt duży.</source></trans-unit>
+    <trans-unit id="upload error 2"><source>Wysłany plik jest zbyt duży.</source></trans-unit>
+    <trans-unit id="upload error 3"><source>Wysłany plik nie został przesłany w całości.</source></trans-unit>
+    <trans-unit id="upload error 4"><source>Wysłany plik nie został przesłany prawidłowo.</source></trans-unit>
+    <trans-unit id="upload error 6"><source>Wysłany plik nie został przesłany prawidłowo. Błąd serwera.</source></trans-unit>
+    <trans-unit id="upload error 7"><source>Wysłany plik nie został przesłany prawidłowo. Błąd serwera.</source></trans-unit>
+    <trans-unit id="upload error 8"><source>Wysłany plik nie został przesłany prawidłowo. Błąd serwera.</source></trans-unit>
+    
+	<trans-unit id="upload error text"><source>Plik musi być plikiem tekstowym.</source></trans-unit>
+	<trans-unit id="upload error image"><source>Plik musi być obrazem typu JPG, GIF lub PNG.</source></trans-unit>
+	
+	<trans-unit id="month 1"><source>styczeń</source></trans-unit>
+	<trans-unit id="month 2"><source>luty</source></trans-unit>
+	<trans-unit id="month 3"><source>marzec</source></trans-unit>
+	<trans-unit id="month 4"><source>kwiecień</source></trans-unit>
+	<trans-unit id="month 5"><source>maj</source></trans-unit>
+	<trans-unit id="month 6"><source>czerwiec</source></trans-unit>
+	<trans-unit id="month 7"><source>lipiec</source></trans-unit>
+	<trans-unit id="month 8"><source>sierpień</source></trans-unit>
+	<trans-unit id="month 9"><source>wrzesień</source></trans-unit>
+	<trans-unit id="month 10"><source>październik</source></trans-unit>
+	<trans-unit id="month 11"><source>listopad</source></trans-unit>
+	<trans-unit id="month 12"><source>grudzień</source></trans-unit>
+</body>
+</file>
+</xliff>

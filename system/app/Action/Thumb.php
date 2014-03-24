@@ -12,7 +12,7 @@ use Vero\Filesystem\Directory;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
 
-class Thumb extends Web\Action\Basic
+class Thumb extends Web\Action
 {
     public function run(Web\Request $req)
     {

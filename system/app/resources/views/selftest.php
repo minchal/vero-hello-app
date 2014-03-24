@@ -116,7 +116,12 @@ $print_results = function ($results) {
                 </thead>
                 <?php
                 foreach ($locales as $lang => $loc) {
-                    echo '<tr><td>'.$lang.'</td><td>'.print_r($loc, true).'</td></tr>';
+                    ?>
+                        <tr>
+                            <td><a href="?lang=<?=$lang?>"><?=$lang?></a></td>
+                            <td><?=print_r($loc, true)?></td>
+                        </tr>
+                    <?php
                 }
                 ?>
             </table>

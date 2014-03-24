@@ -2,11 +2,11 @@
 
 return [
 	'debug'    => true,
+    'repository' => '@@repo_path@@',
 	'timezone' =>'Europe/Warsaw',
 	'language' =>'pl',
     'keys' => [
         'debug' => 'file://'.__DIR__.'/app/critical.key',
-        'salt'  => ''
     ],
 	'app' => [
 		'project' => 'VeroCMS',
@@ -18,9 +18,9 @@ return [
 	],
 	'database' => [
         'prefix'   => '',
-		'dbname'   => 'vero',
-		'user'     => 'vero',
-		'password' => '',
+		'dbname'   => '@@db_name@@',
+		'user'     => '@@db_user@@',
+		'password' => '@@db_pass@@',
 		'host'     => 'localhost',
 		'driver'   => 'pdo_mysql',
 		'driverOptions' => [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'],

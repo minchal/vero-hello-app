@@ -19,31 +19,35 @@
     </div>
 {% endmacro %}
 
-{% macro input(type, name, label, value, error, attr = {}, prefix = 'f_') %}
+{% macro input(type, name, label, value, error, attr = {}, prefix = 'f_', addons = {}) %}
     {% from '_forms/html.twig' import label, input %}
     
     <div class="form-group{% if error %} has-error{% endif %}">
-        {{ label(label, prefix ~ name, 'form-label') }}
+        {{ label(label, prefix ~ name, 'form-label', addons.label) }}
         <div class="form-controls">
+            {{ addons.pre }}
             {{ input(type, name, value, attr, prefix ~ name) }}
+            {{ addons.post }}
             {{ _self.error(error, prefix ~ name) }}
         </div>
     </div>
 {% endmacro %}
 
-{% macro textarea(name, label, value, error, attr = {}, prefix = 'f_') %}
+{% macro textarea(name, label, value, error, attr = {}, prefix = 'f_', addons = {}) %}
     {% from '_forms/html.twig' import label, textarea %}
     
     <div class="form-group{% if error %} has-error{% endif %}">
-        {{ label(label, prefix ~ name, 'form-label') }}
+        {{ label(label, prefix ~ name, 'form-label', addons.label) }}
         <div class="form-controls">
+            {{ addons.pre }}
             {{ textarea(name, value, attr, prefix ~ name) }}
+            {{ addons.post }}
             {{ _self.error(error, prefix ~ name) }}
         </div>
     </div>
 {% endmacro %}
 
-{% macro checkbox(name, label, value, error, attr = {}, prefix = 'f_') %}
+{% macro checkbox(name, label, value, error, attr = {}, prefix = 'f_', addons = {}) %}
     {% from '_forms/html.twig' import label, input %}
     
     {%- if value -%}
@@ -60,32 +64,48 @@
     </div>
 {% endmacro %}
 
-{% macro select(options, name, label, value, error, attr = {}, prefix = 'f_') %}
+{% macro checkbox_single(name, label, value, error, attr = {}, prefix = 'f_', addons = {}) %}
+    {% from '_forms/html.twig' import label, input %}
+    
+    {%- if value -%}
+        {% set attr = {checked: 'checked'}|merge(attr) %}
+    {%- endif -%}
+    
+    <label class="checkbox">
+        {{ input('checkbox', name, '1', attr, prefix ~ name) }}
+        {{ label }}
+    </label>
+    {{ _self.error(error, prefix ~ name) }}
+{% endmacro %}
+
+{% macro select(options, name, label, value, error, attr = {}, prefix = 'f_', addons = {}) %}
     {% from '_forms/html.twig' import label, select %}
     
     <div class="form-group{% if error %} has-error{% endif %}">
-        {{ label(label, prefix ~ name, 'form-label') }}
+        {{ label(label, prefix ~ name, 'form-label', addons.label) }}
         <div class="form-controls">
+            {{ addons.pre }}
             {{ select(options, name, value, attr, prefix ~ name) }}
+            {{ addons.post }}
             {{ _self.error(error, prefix ~ name) }}
         </div>
     </div>
 {% endmacro %}
 
-{% macro radio(options, name, label, value, error, attr = {}, prefix = 'f_', inline = false) %}
+{% macro radio(options, name, label, value, error, attr = {}, prefix = 'f_', addons = {}) %}
     {% from '_forms/html.twig' import attr, label, input %}
 
     {% set value = value and options.getKey is defined ? options.getKey(value) : value %}
     
     <div class="form-group{% if error %} has-error{% endif %}">
-        {{ label(label, null, 'form-label') }}
+        {{ label(label, null, 'form-label', addons.label) }}
         <div class="form-controls">
             {% for k,v in options %}
                 {%- if k == value -%}
                     {% set attr2 = {checked: checked}|merge(attr) %}
                 {%- endif -%}
 
-                <label class="radio{% if inline %}-inline{% endif %}">
+                <label class="radio{% if addons.inline %}-inline{% endif %}">
                     {{ input('radio', name, k, attr2, prefix ~ name ~ '_' ~ k) }}
                     {{ v }}
                 </label>
@@ -98,20 +118,20 @@
     </div>
 {% endmacro %}
 
-{% macro checkboxes(options, name, label, value, error, attr = {}, prefix = 'f_', inline = false) %}
+{% macro checkboxes(options, name, label, value, error, attr = {}, prefix = 'f_', addons = {}) %}
     {% from '_forms/html.twig' import attr, label, input %}
     
     {% set value = value and options.getKeys is defined ? options.getKeys(value) : value %}
     
     <div class="form-group{% if error %} has-error{% endif %}">
-        {{ label(label, null, 'form-label') }}
+        {{ label(label, null, 'form-label', addons.label) }}
         <div class="form-controls">
             {% for k,v in options %}
                 {%- if k in value -%}
                     {% set attr2 = {checked: checked}|merge(attr) %}
                 {%- endif -%}
 
-                <label class="checkbox{% if inline %}-inline{% endif %}">
+                <label class="checkbox{% if addons.inline %}-inline{% endif %}">
                     {{ input('checkbox', name~'[]', k, attr2, prefix ~ name ~ '_' ~ k) }}
                     {{ v }}
                 </label>

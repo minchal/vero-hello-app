@@ -14,7 +14,7 @@ use Vero\Web\Request;
  */
 class App extends \Vero\Application\App
 {
-    const VERSION = '1.4';
+    const VERSION = '1.5';
 
     protected function prepareEnvironment()
     {
@@ -51,7 +51,7 @@ class App extends \Vero\Application\App
         $loader -> loadAll($this -> path('resources/services/'));
     }
 
-    public function run($controller = '\Vero\Web\Controller')
+    public function run($controller = 'App\Controller\Web')
     {
         $controller = new $controller($this -> container);
 

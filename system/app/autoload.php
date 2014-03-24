@@ -9,6 +9,7 @@ $libs = realpath(__DIR__.'/../vendor');
 require $libs.'/minchal/vero/src/Vero/Loader/UniversalLoader.php';
 
 return (new \Vero\Loader\UniversalLoader())
+    -> addClassMap(require $libs.'/composer/autoload_classmap.php')
     -> addDirect('App', __DIR__)
     -> addAll(require $libs.'/composer/autoload_namespaces.php')
     -> add('Swift', $libs.'/swiftmailer/swiftmailer/lib/classes/')

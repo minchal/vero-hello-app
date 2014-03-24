@@ -37,10 +37,12 @@
     </select>
 {% endmacro %}
 
-{% macro label(label, for, class) %}
+{% macro label(label, for, class, addons = {}) %}
     {% if label %}
         <label for="{{ for }}"{% if class %} class="{{ class }}"{% endif %}>
+            {{ addons.pre }}
             {{ label }}
+            {{ addons.post }}
         </label>
     {% endif %}
 {% endmacro %}
